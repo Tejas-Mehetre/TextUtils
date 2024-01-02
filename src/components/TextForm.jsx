@@ -34,24 +34,24 @@ export default function TextForm(props) {
     <>
         <div className="mb-3 my-3 container">
             <h2>Enter the Text here </h2>
-            <textarea className="form-control" value={text} onChange={onchangefunc} rows="8" style={{backgroundColor:props.mode === 'dark'?'#333333':'#bfbfbf',color:props.mode === 'dark'?'white':'black'}}></textarea>
-            <button className='btn btn-danger my-3 mx-2' onClick={toUpcase}>Convert to Uppercase</button>
-            <button className='btn btn-danger my-3 mx-2' onClick={tolocase}>Convert to LowerCase</button>
-            <button className='btn btn-danger my-3 mx-2' onClick={clearExtraSpaces}>Remove extra spaces</button>
-            <button className='btn btn-danger my-3 mx-2' onClick={copyText}>Copy Text</button>
-            <button className='btn btn-danger my-3 mx-2' onClick={clear}>Clear Text</button>
+            <textarea className="form-control my-2" value={text} onChange={onchangefunc} rows="8" style={{backgroundColor:props.mode === 'dark'?'#333333':'#bfbfbf',color:props.mode === 'dark'?'white':'black'}}></textarea>
+            <button className='btn btn-danger my-1 mx-2' onClick={toUpcase}>Convert to Uppercase</button>
+            <button className='btn btn-danger my-1 mx-2' onClick={tolocase}>Convert to LowerCase</button>
+            <button className='btn btn-danger my-1 mx-2' onClick={clearExtraSpaces}>Remove extra spaces</button>
+            <button className='btn btn-danger my-1 mx-2' onClick={copyText}>Copy Text</button>
+            <button className='btn btn-danger my-1 mx-2' onClick={clear}>Clear Text</button>
 
         </div>
         <div className="count container">
         <p>
         <b>
             {text
-            .split(/\s+/)
+            .split(" ")
             .filter(word => word.trim() !== '')
             .length}
         </b> Words and <b>{text.length}</b> characters
         </p>
-            <p>need <b>{0.008 * text.split(" ").length}</b> minutes to read</p>
+            <p>need <b>{0.008 * text.split(" ").filter(word => word.trim() !== '').length}</b> minutes to read</p>
             <h2>Preview</h2>
             <p>{text}</p>
         </div>
